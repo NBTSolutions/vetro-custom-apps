@@ -8,6 +8,7 @@ function vetroApp(appId: string) {
     base: 'http://localhost:8801',
     publicDir: resolve(__dirname, 'public'),
     build: {
+      sourcemap: true,
       cssCodeSplit: true,
       lib: {
         entry: resolve(__dirname, 'src/App.tsx'),

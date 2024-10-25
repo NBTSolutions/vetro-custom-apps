@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "start": "concurrently \"VITE_API_HOST=local npm run build -- --mode development --watch\" \"node scripts/serve.js\" ",
-    "build": "tsc && vite build --mode production"
+    "build": "tsc && vite build --mode production",
+    "postbuild": "cp package.json dist/ && npm run zip",
+    "zip": "cd dist && zip -r ../build.zip . && cd .."
   },
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
