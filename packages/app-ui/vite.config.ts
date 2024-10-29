@@ -1,13 +1,14 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-const APP_ID = 'aHqB7DbB-qinc48KsZwE-';
+const APP_ID = 'm4P4JE4UussbZT1MrlEot';
 
 function vetroApp(appId: string) {
   return defineConfig({
     base: 'http://localhost:8801',
     publicDir: resolve(__dirname, 'public'),
     build: {
+      sourcemap: true,
       cssCodeSplit: true,
       lib: {
         entry: resolve(__dirname, 'src/App.tsx'),
