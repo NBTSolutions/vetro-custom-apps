@@ -27,6 +27,6 @@ dist-ssr
 *.sw?
 
 .build
+build/
 
 build.zip
-

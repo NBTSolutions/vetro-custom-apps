@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
-const APP_ID = 'jOxN8r73ZAmylmgazvZ0u';
+const APP_ID = 'S8NImqnvIGlMmhQAkVqrJ';
 
 function vetroApp(appId: string) {
   return defineConfig({
