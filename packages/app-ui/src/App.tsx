@@ -14,6 +14,7 @@ import {
   Select,
   message,
   DatePicker,
+  Typography,
 } from 'antd';
 import {
   PlusOutlined,
@@ -205,7 +206,7 @@ const Dashboard = ({ context: { user } }: Props) => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Content style={{ padding: '10px', paddingTop: 16 }}>
-        Welcome {user.email}! This is the Dashboard page.
+        Welcome <Typography.Text strong>{user.email}</Typography.Text>! This is the Dashboard page.
         <Breadcrumb style={{ margin: '16px 0' }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
           <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
