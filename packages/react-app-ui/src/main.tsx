@@ -4,10 +4,10 @@ import { AppProps } from "./types";
 
 export default {
   type: "custom",
-  render(container: HTMLElement, props: AppProps) {
-    const root = ReactDOMClient.createRoot(container);
-    root.render(<Dashboard {...props} />);
-    return root;
+  render(container: HTMLElement, props: AppProps, root?: ReactDOMClient.Root) {
+    const r = root ?? ReactDOMClient.createRoot(container);
+    r.render(<Dashboard {...props} />);
+    return r;
   },
   unmount(root: ReactDOMClient.Root) {
     root.unmount();

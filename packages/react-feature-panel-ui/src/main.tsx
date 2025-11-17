@@ -4,11 +4,15 @@ import { FeaturePanelProps } from "./types";
 
 export default {
   type: "custom",
-  render(container: HTMLElement, props: FeaturePanelProps) {
+  render(
+    container: HTMLElement,
+    props: FeaturePanelProps,
+    root?: ReactDOMClient.Root
+  ) {
     console.log("Feature Panel Props:", props);
-    const root = ReactDOMClient.createRoot(container);
-    root.render(<CustomerProvisionCard />);
-    return root;
+    const r = root ?? ReactDOMClient.createRoot(container);
+    r.render(<CustomerProvisionCard />);
+    return r;
   },
   unmount(root: ReactDOMClient.Root) {
     root.unmount();
