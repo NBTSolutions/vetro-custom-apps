@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Layout,
   Breadcrumb,
@@ -39,8 +39,9 @@ const initialData = Array.from({ length: 20 }, (_, index) => ({
   provisioned: false,
 }));
 
-const Dashboard = ({ context: { user } }: AppProps) => {
+const Dashboard = ({ context: { user, fetchFibermapAPI } }: AppProps) => {
   const [data, setData] = useState(initialData);
+  const [totalPlans, setTotalPlans] = useState<number | null>(null);
   const [filteredData, setFilteredData] = useState(initialData);
   const [searchText, setSearchText] = useState("");
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
@@ -50,6 +51,19 @@ const Dashboard = ({ context: { user } }: AppProps) => {
   const [provisioningRecord, setProvisioningRecord] = useState<any>(null);
   const [form] = Form.useForm();
   const [provisionForm] = Form.useForm();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetchFibermapAPI("/v2/plans");
+        const data = await response.json();
+        setTotalPlans(data.result.plans.length);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   // Table columns definition with sorting, filters, and actions
   const columns = [
@@ -211,7 +225,8 @@ const Dashboard = ({ context: { user } }: AppProps) => {
     <Layout style={{ minHeight: "100vh" }}>
       <Content style={{ padding: "10px", paddingTop: 16 }}>
         Welcome <Typography.Text strong>{user.email}</Typography.Text>! This is
-        the Dashboard page.
+        the Dashboard page. You have {totalPlans ?? "loading..."} plans
+        available.
         <Breadcrumb
           style={{ margin: "16px 0" }}
           items={[
