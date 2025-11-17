@@ -8,8 +8,9 @@ export interface User {
   role: string;
 }
 
-export interface CustomAppProps {
+export interface Feature {}
+
+export interface FeaturePanelProps {
+  feature: Feature & any;
   context: AppContext;
 }
-
-export type AppProps = CustomAppProps;
