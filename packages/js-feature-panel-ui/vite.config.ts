@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import { resolve } from "node:path";
 
-const APP_ID = "d3CdARzBWJknDjAEeluHi";
+const APP_ID = "__APP_ID__";
 
 function vetroApp(appId: string) {
   return defineConfig({
@@ -11,7 +11,7 @@ function vetroApp(appId: string) {
       sourcemap: true,
       cssCodeSplit: true,
       lib: {
-        entry: resolve(import.meta.dirname, "src/main.tsx"),
+        entry: resolve(import.meta.dirname, "src/main.ts"),
         name: appId,
         fileName: (format) => `app.${format}.js`,
         formats: ["umd"],

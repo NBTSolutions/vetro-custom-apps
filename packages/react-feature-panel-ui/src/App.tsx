@@ -16,7 +16,7 @@ import {
   CheckCircleOutlined,
   HistoryOutlined,
 } from "@ant-design/icons";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const { Option } = Select;
 
@@ -106,7 +106,7 @@ export const CustomerProvisionCard = ({ customer = customerData }) => {
         <Descriptions.Item label="Plan">{customer.plan}</Descriptions.Item>
         <Descriptions.Item label="Activation Date">
           {customer.activationDate
-            ? moment(customer.activationDate).format("YYYY-MM-DD")
+            ? dayjs(customer.activationDate).format("YYYY-MM-DD")
             : "Not Set"}
         </Descriptions.Item>
       </Descriptions>
